@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "9c98a0f5-f7d5-4d8f-b4c0-88b5e6b0b2c0",
+		"name": "PT FAN TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15418689"
+	},
+	"item": [
+		{
+			"name": "REGISTER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nama",
+							"value": "supervisor",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "spv@email.com",
+							"type": "text"
+						},
+						{
+							"key": "npp",
+							"value": "11111",
+							"type": "text"
+						},
+						{
+							"key": "nppSupervisor",
+							"value": "-",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/auth/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"spv@email.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE PRESENCE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "OUT",
+							"type": "text"
+						},
+						{
+							"key": "waktu",
+							"value": "2020-10-22 16:00:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/presence",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"presence"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET PRESENCE",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "OUT",
+							"type": "text"
+						},
+						{
+							"key": "waktu",
+							"value": "2020-10-16 17:00:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/presence",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"presence"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "DENI",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "APPROVAL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "OUT",
+							"type": "text"
+						},
+						{
+							"key": "waktu",
+							"value": "2020-10-21 17:00:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/presence/approval/:id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"presence",
+						"approval",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8888",
+			"type": "string"
+		}
+	]
+}
